@@ -7,11 +7,15 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  const client=new QueryClient();
+
   return (
+    <QueryClientProvider client={client}>
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
@@ -41,5 +45,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    </QueryClientProvider>
   );
 }
